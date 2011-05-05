@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document is a guideline to use the AviaryFX PHP Library.
+A library for the Aviary Effects API written in PHP.
 
 ## Test
 
@@ -14,8 +14,7 @@ The Aviary Effects API is exposed via the AviaryFX class.
 
 To create an instance of the class with your API key and API secret:
 
-<pre><code>
-require_once("AviaryFX.php");
+<pre><code>require_once("AviaryFX.php");
 $api_key = "demoapp";
 $api_secret = "demoappsecret";
 $aviaryfx = new AviaryFX($api_key, $api_secret);
@@ -27,8 +26,7 @@ The getFilters() method returns an array of filters that contain the label, uid 
 
 To get the array of filters:
 
-<pre><code>
-$getFiltersResponse = $aviaryfx->getFilters();
+<pre><code>$getFiltersResponse = $aviaryfx->getFilters();
 print_r($getFiltersResponse);
 </pre></code>
 
@@ -38,8 +36,7 @@ The upload() method is used to upload image files to the AviaryFX Service to app
 
 To upload an image:
 
-<pre><code>
-$file = 'uploads/ostrich.jpg';
+<pre><code>$file = 'uploads/ostrich.jpg';
 $uploadResponse = $aviaryfx->upload($file);
 print_r($uploadResponse);
 </code></pre>
@@ -50,8 +47,7 @@ Use the renderOptions() method to render a thumbnail grid of the image with pres
 
 To render a 3x3 thumbnail grid with 128px x 128px cells:
 
-<pre><code>
-$backgroundcolor = "0xFFFFFFFF";
+<pre><code>$backgroundcolor = "0xFFFFFFFF";
 $format = "jpg";
 $quality = "100";
 $scale = "1";
@@ -69,8 +65,7 @@ print_r($renderOptionsResponse);
 
 Once an option is selected call the render() method along with the filter ID, image url and the parameters for the selected option. This returns a dict with the URL to rendered image.
 
-<pre><code>
-$backgroundcolor = "0xFFFFFFFF";
+<pre><code>$backgroundcolor = "0xFFFFFFFF";
 $format = "jpg";
 $quality = "100";
 $scale = "1";
