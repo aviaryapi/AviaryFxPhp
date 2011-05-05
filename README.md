@@ -28,7 +28,7 @@ To get the array of filters:
 
 <pre><code>$getFiltersResponse = $aviaryfx->getFilters();
 print_r($getFiltersResponse);
-</pre></code>
+</code></pre>
 
 ## Upload an image to the AviaryFX Service
 
