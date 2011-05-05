@@ -11,7 +11,7 @@
 	{
 		
 		const VERSION = "0.2";
-		const PLATFORM = "web";
+		const PLATFORM = "html";
 		const HARDWARE_VERSION = "1.0";
 	 	const SOFTWARE_VERSION = "PHP";
 		const APP_VERSION = "1.0";
@@ -132,7 +132,7 @@
 			$hardware_version = self::HARDWARE_VERSION;
 			$software_version = self::SOFTWARE_VERSION;
 			$app_version = self::APP_VERSION;
-			$calltype = "filteruse";
+			$calltype = "previewRender";
 			$ts = $this->getTime();
 			$paramsToHash = compact(	'api_key', 'platform', 'hardware_version', 'software_version', 'app_version', 'ts', 'version', 'calltype', 'backgroundcolor', 
 										'format', 'quality', 'scale', 'filepath', 'filterid', 'cols', 'rows', 'cellwidth', 'cellheight');
