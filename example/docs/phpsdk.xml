@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespaces>
+  <namespace name='' typeoverride=''>
+    <class name='AviaryFX' typeoverride=''>
+      <description>
+		<![CDATA[AviaryFX PHP SDK]]>
+      </description>
+      <properties>
+      </properties>
+
+      <methods>
+
+        <method name='getFilters'>
+          <description>
+            <![CDATA[Gets a list of available filters.]]>
+          </description>
+          <params>
+          </params>
+          <returns>
+            array of filters with label, uid, thumb, description and parameter list for each filter.
+          </returns>
+          <codesample>
+
+            <![CDATA[
+$getFiltersResponse = $aviaryfx->getFilters();
+print_r($getFilterResponse);]]>
+          </codesample>
+        </method>
+
+        <method name='upload'>
+          <description>
+            <![CDATA[
+				 	Uploads an image to the Aviary server.
+				 ]]>
+          </description>
+          <params>
+            <param name='filename' required='True' type='String'>
+				<description><![CDATA[The filename including extension, stored in the 'uploads' folder.]]></description>
+			</param>
+          </params>
+          <returns>
+            array with url to the file.
+          </returns>
+          <codesample>
+            <![CDATA[
+$file = 'path/to/file.jpg';
+$uploadResponse = $aviaryfx->upload($file);
+print_r($uploadResponse);]]>
+          </codesample>
+        </method>
+
+        <method name='renderOptions'>
+
+          <description>
+            <![CDATA[Renders a filter options thumbnail grid and returns render parameters for each option.]]>
+          </description>
+          <params>
+            <param name='backgroundcolor' required='True' type='String'>
+				<description><![CDATA[Background color for transparent uploads. Format: Hex values for Red Green Blue Alpha. Example: 0xFFFFFFFF]]></description>
+			</param>
+            <param name='format' required='True' type='String'>
+				<description><![CDATA[Rendered file format - JPG/PNG.]]></description>
+			</param>
+            <param name='quality' required='True' type='String'>
+				<description><![CDATA[Rendered file quality for JPG files. Value from 1-100]]></description>
+			</param>
+            <param name='scale' required='True' type='String'>
+				<description><![CDATA[Scale of the image. Value 0.0-1.0.]]></description>
+			</param>
+            <param name='filepath' required='True' type='String'>
+				<description><![CDATA[The url retrieved using the upload method.]]></description>
+			</param>
+            <param name='filterid' required='True' type='String'>
+				<description><![CDATA[ID of the filter.]]></description>
+			</param>
+            <param name='cols' required='True' type='String'>
+				<description><![CDATA[The number of columns to render in thumbnail grid.]]></description>
+			</param>
+            <param name='rows' required='True' type='String'>
+				<description><![CDATA[The number of rows to render in thumbnail grid.]]></description>
+			</param>
+            <param name='cellwidth' required='True' type='String'>
+				<description><![CDATA[The width of each cell in thumbnail grid.]]></description>
+			</param>
+            <param name='cellheight' required='True' type='String'>
+				<description><![CDATA[The height of each cell in thumbnail grid]]></description>
+			</param>
+          </params>
+          <returns>
+            array with url to thumbnail grid and render option parameters.
+          </returns>
+
+          <codesample>
+            <![CDATA[
+$backgroundcolor = "0xFFFFFFFF";
+$format = "jpg";
+$quality = "100";
+$scale = "1";
+$filepath = $uploadResponse["url"];
+$filterid = "22";
+$cols = "3";
+$rows = "3";
+$cellwidth = "128";
+$cellheight = "128";
+$renderOptionsResponse = $aviaryfx->renderOptions($backgroundcolor, $format, 
+						$quality, $scale, $filepath, $filterid, 
+						$cols, $rows, $cellwidth, $cellheight);
+print_r($renderOptionsResponse);]]>
+          </codesample>
+        </method>
+
+        <method name='render'>
+          <description>
+            <![CDATA[Renders image based on render parameters.]]>
+          </description>
+          <params>
+            <param name='backgroundcolor' required='True' type='String'>
+				<description><![CDATA[Background color for transparent uploads. Format: Hex values for Red Green Blue Alpha. Example: 0xFFFFFFFF]]></description>
+			</param>
+            <param name='format' required='True' type='String'>
+				<description><![CDATA[Rendered file format - JPG/PNG.]]></description>
+			</param>
+            <param name='quality' required='True' type='String'>	
+				<description><![CDATA[Rendered file quality for JPG files. Value from 1-100]]></description>
+			</param>
+            <param name='scale' required='True' type='String'>
+				<description><![CDATA[Scale of the image. Value 0.0-1.0.]]></description>
+			</param>
+            <param name='filepath' required='True' type='String'>
+				<description><![CDATA[The url retrieved using AviaryFX->upload.]]></description>
+			</param>
+            <param name='filterid' required='True' type='String'>
+				<description><![CDATA[ID of the filter.]]></description>
+			</param>
+            <param name='width' required='True' type='String'>
+				<description><![CDATA[The width of the rendered image. 0 returns original width.]]></description>
+			</param>
+            <param name='height' required='True' type='String'>
+				<description><![CDATA[The height of the rendered image. 0 returns original height.]]></description>
+			</param>
+            <param name='renderparameters' required='True' type='Array'>
+				<description><![CDATA[(Optional) Filter render parameters retrieved from AviaryFX->renderOptions]]></description>
+			</param>
+          </params>
+          <returns>
+             array with URL to rendered image
+          </returns>
+          <codesample>
+            <![CDATA[
+$backgroundcolor = "0xFFFFFFFF";
+$format = "jpg";
+$quality = "100";
+$scale = "1";
+$width = "0";
+$height = "0";
+$renderparameters = array	( "parameter" => array	( 	array("id" => "Gamma", "value" => 2.3908640030750226 ),
+								                            array("id" => "Smoothing", "value" => 4 ),
+								                            array("id" => "Caption Index", "value" => 50 ) 
+														)
+								);
+$renderResponse = $aviaryfx->render($backgroundcolor, $format, $quality, $scale, 
+					$filepath, $filterid, $cols, $rows, 
+					$cellwidth, $cellheight, $renderparameters);
+print_r( $renderResponse );]]>
+
+          </codesample>
+        </method>
+
+      </methods>
+    </class>
+  </namespace>
+</namespaces>

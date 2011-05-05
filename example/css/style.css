@@ -1,0 +1,95 @@
+@IMPORT url("reset.css");
+
+body {
+	background-color: #000000;
+	font-family: "Helvetica", "Lucida Grande", Arial, sans-serif;
+	font-size: 11px;
+	color: #F7F7F7;
+}
+
+a {
+	color: #FFFFFF;
+}
+
+a:hover {
+	color: #FF3300;
+}
+
+.clearfix {
+	clear: both;
+}
+
+#container {
+	margin: auto;
+	width: 940px;
+	padding: 10px;
+}
+
+#leftPanel {
+	width: 520px;
+	height: 480px;
+	float: left;
+	border: 1px solid #ccc;
+	background-color: #FFF;
+}
+
+#rightPanel {
+	width: 400px;
+	height: 460px;
+	padding: 10px 5px;
+	float: right;
+	margin: auto;
+	border: 1px solid #FFF;
+	background-color: #FFFFFF;
+}
+
+/**
+ * http://plugins.jquery.com/project/simple_image_panner
+ * Default CSS for pan containers
+ */
+.pancontainer {
+	position:relative; /*keep this intact*/
+	overflow:hidden; /*keep this intact*/
+	width: 100%;
+	height: 100%;
+	border: 0px solid black;
+}
+
+#loader {
+	position: absolute;
+	width: 940px;
+	height: 273px;
+	text-align: center;
+	padding-top: 219px;
+	background-image: url("../images/loaderBgTile.png");
+	background-repeat: repeat;
+	z-index: 2000;
+}
+
+#uploadForm {
+	width: 100%;
+	text-align: center;
+	line-height: 460px;
+}
+
+#uploadForm #file {
+	border: 1px solid #000;
+}
+
+#thumbs {
+	width: 400px;
+	padding-top: 10px;
+}
+
+#thumbs div {
+	width: 128px;
+	height: 128px;
+	display: block;
+	float: left;
+	color: transparent;
+	background-image: url("../images/thumbsSample.jpg");
+	background-repeat: no-repeat;
+	border: 0px solid #666666;
+	margin: 0 3px 3px 0;
+	cursor: pointer;
+}

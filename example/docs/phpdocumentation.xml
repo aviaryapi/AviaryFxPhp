@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<documentation>
+  <section title="">
+    <![CDATA[
+      <div>
+        This document is a guideline to use the AviaryFX PHP SDK.
+      </div>
+      <h3>Step 0: Instantiate an AviaryFX object</h3>
+      <div>
+        The first step is to instantiate an AviaryFX object:
+        <pre class='code'>
+
+$aviaryfx = new AviaryFX($api_key, $api_secret);
+        </pre>
+        Once an instance of the class has been instantiated, you can call the methods like: <em>aviaryfx->getFilters()</em>, etc
+      </div>
+      <h3>Step 1: Get a list of filters</h3>
+      <div>
+        To retrieve a list of filters that can be used to render images call the <em>aviaryfx->getFilters()</em> method. 
+        This returns an array of filters with label, uid, thumb, description and parameter list for each filter.
+      </div>
+      <h3>Step 2: Upload an image to the AviaryFX server</h3>
+      <div>
+       To upload an image file to the AviaryFX server use the <em>aviaryfx->upload()</em> method. This method returns
+       an array with a url to the file on the server. The returned url should be used for subsequent interactions.
+      </div>
+      <h3>Step 3: Render thumbnails</h3>
+      <div>
+        Once a filter is selected call <em>aviaryfx->renderOptions()</em> to render a thumbnail grid. 
+        This returns an array with a url to the thumbnail grid and render option parameters for each of the requested number of options for that filter.
+      </div>
+      <h3>Step 4: Render full image</h3>
+      <div>
+        Once an option is selected call <em>aviaryfx->render()</em> along with the filter ID, image url and the parameters for the selected option.
+        This returns an array with the URL to rendered image.
+      </div>
+    ]]>
+  </section>
+  <section title="Quickstart Code">
+    <![CDATA[
+        <div class="">
+            The following code sample will instantiate an AviaryFX object:
+        </div>
+        <div class="">
+            <div class="code">
+                <pre>
+                
+require_once("AviaryFX.php");
+
+$api_key = "demoapp";
+$api_secret = "demoappsecret";
+	
+$aviaryfx = new AviaryFX($api_key, $api_secret);
+                </pre>
+            </div>
+        </div>
+    ]]>
+  </section>
+</documentation>
