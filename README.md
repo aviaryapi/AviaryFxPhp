@@ -82,7 +82,7 @@ print_r($renderResponse);
 
 ## Methods
 
-Check out the official [Aviary Effects API documentation](http://developers.viary.com/effects-api) for more details about the Aviary Effects API and class methods.
+Check out the official [Aviary Effects API documentation](http://developers.aviary.com/effects-api) for more details about the Aviary Effects API and class methods.
 
 ## Feedback and questions
 
